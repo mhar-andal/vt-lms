@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Button, Card } from "ui";
+import { Button, Card } from "@vt/ui";
 
 const CARD_CONTENT = [
   {
