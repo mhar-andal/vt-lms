@@ -2,7 +2,6 @@
   "name": "storybook",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
   "scripts": {
     "dev": "sb dev",
     "build": "sb build"
@@ -32,6 +31,7 @@
     "eslint-plugin-storybook": "^0.6.12",
     "prop-types": "^15.8.1",
     "storybook": "^7.0.10",
+    "tailwind-config": "workspace:*",
     "typescript": "^5.0.2",
     "vite": "^4.3.2",
     "vite-tsconfig-paths": "^4.2.0"

@@ -1,10 +1,11 @@
 import { defineConfig, Options } from "tsup";
 
 export default defineConfig((options: Options) => ({
+  publicDir: "./public",
   treeshake: true,
   splitting: true,
-  entry: ["src/**/*.tsx"],
-  format: ["esm"],
+  entry: ["src/**/*.ts"],
+  format: ["cjs"],
   dts: true,
   minify: true,
   clean: true,

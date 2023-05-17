@@ -10,15 +10,29 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
+model Subject {
+  id        Int       @id @default(autoincrement())
   name      String?
-  role      Role     @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  courses   Course[]
+  widgets   Widget[]
 }
 
-enum Role {
-  USER
-  ADMIN
+model Course {
+  id        Int       @id @default(autoincrement())
+  name      String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+  subject   Subject   @relation(fields: [subjectId], references: [id])
+  subjectId Int
+}
+
+model Widget {
+  id       Int       @id @default(autoincrement())
+  name     String?
+  type     String?
+  subjects Subject[]
 }
