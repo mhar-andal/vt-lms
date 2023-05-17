@@ -1,0 +1,22 @@
+{
+  "name": "pixi-example",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "npx webpack --config webpack.config.ts",
+    "start": "dotenv -e ./.env.local node ./dist/index.js"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "html-webpack-plugin": "^5.5.1",
+    "pixi.js": "^7.2.4"
+  },
+  "devDependencies": {
+    "dotenv-cli": "latest",
+    "ts-loader": "^9.4.2",
+    "tsconfig": "workspace:*",
+    "tsup": "^6.7.0",
+    "typescript": "^5.0.4",
+    "webpack": "^5.83.0",
+    "webpack-cli": "^5.1.1"
+  }
+}
