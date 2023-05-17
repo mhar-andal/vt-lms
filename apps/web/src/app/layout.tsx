@@ -3,6 +3,8 @@ import "../styles/globals.css";
 // include styles from the ui package
 import "@vt/ui/styles.css";
 
+import { PrismaClient } from "database";
+
 export default function RootLayout({
   children,
 }: {
