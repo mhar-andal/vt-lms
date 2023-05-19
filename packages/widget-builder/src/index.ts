@@ -32,7 +32,7 @@ const complete = async (fileName: string, ...completionParams: Parameters<typeof
 
 async function runCompletion() {
   const promptData: string = `
-    a web application that teaches long hand division
+    a web application that teaches addition
   `;
   // await fs.readFile(
   //   path.resolve(__dirname, "./prompt.md"),
@@ -56,17 +56,18 @@ async function runCompletion() {
         role: "system",
         content: `You are an AI product manager that is building ${promptData}.
 
-        The end user of the application is a student and his intent is to learn long hand division using the application.
+        The end user of the application is a student and his intent is to learn using the application.
       
-        Be specific about the features that will help the student understand all the different terms in a division problem. An example of a feature could be that when the student hovers over a number, it tells them what that number represents.
-      
+        Your job is to create a list of features for the application you are building.
+
         Remember there are a few limitations:
         - Any visual in the application should be created with CSS. No image files are allowed.
         - It should include a brief explanation of the topic and it should aid the student to understand the topic better.
-        - The scope of the application is small and therefore it must be a simple application.
-        - It MUST be interactive like a game
-        - It MUST provide feedback on the user input
+        - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
+        - MOST IMPORTANT OF ALL - All of the items in the list are limited to a single simple game. Do not add requirements to more than one game.
       
+        Add up to 3 features only.
+
         Use markdown format.
         `
       },
@@ -87,13 +88,16 @@ async function runCompletion() {
         role: "system",
         content: `You are a UX researcher working on ${promptData}.
 
-        Given the detailed specification document delimited by tripple backticks, create a complete, exhaustive list of interactions
+        Given the detailed specification document delimited by tripple backticks, create a complete, exhaustive list of up to 3 items describing the interactions
 
         \`\`\`
         ${spec}
         \`\`\`
 
-        Use markdown format.
+        Remember:
+        - Add up to 3 items only
+        - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
+        - Use markdown format.
         `
       },
       {
@@ -119,7 +123,10 @@ async function runCompletion() {
         ${spec}
         \`\`\`
 
-        Use markdown format.
+        Remember:
+        - Add up to 3 items only
+        - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
+        - Use markdown format.
         `
       },
       {
@@ -148,7 +155,12 @@ async function runCompletion() {
         ${ui}
         \`\`\`
 
-        Do not create any JavaScript code. Only output minimal HTML and CSS code.
+        Remember:
+        - Add up to 3 items only
+        - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
+        - Do not add any JavaScript code.
+        - Only output a single html file.
+        - Do not add any explanation.
         `,
       },
       {
@@ -178,7 +190,7 @@ async function runCompletion() {
         3. Include a list of functional requirements to accomplish the goals defined in the specification document delimited by tripple backticks
 
         \`\`\`
-        ${spec}
+        ${ux}
         \`\`\`
 
         The output format should be a JSON object with the following format:
@@ -195,6 +207,10 @@ async function runCompletion() {
             }
           ]
         }
+
+        Remember:
+        - Add up to 3 items only
+        - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
         `
       },
     ],
@@ -228,7 +244,9 @@ async function runCompletion() {
           ${indexFile}
           \`\`\`
 
-          Do not reference any external files.
+          Remember:
+          - Do not reference any external files.
+          - It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
         `,
       },
       {
@@ -246,7 +264,17 @@ async function runCompletion() {
           3. Placeholders or "coming soon" features are not acceptable.
           4. Do not delete any CSS classes, HTML tags, including script HTML tags.
           5. You will never show just the comment of the code like "code goes here", instead you will type that part of the code that is needed to complete the code.
-          6. Do not add any explanation. Just output the code.
+          6. Do not reference any external files.
+          7. It's a simple single page application, therefore there should be no links to other pages and everything should be self-contained into a single simple page.
+          8. - MOST IMPORTANT OF ALL - the purpose of our app is {prompt} - every line of code you generate must be valid code. Do not include any explanation or code fences in your response, for example
+    
+          Bad response:
+          \`\`\`javascript 
+          console.log("hello world")
+          \`\`\`
+          
+          Good response:
+          console.log("hello world")
           `,
       },
       {
